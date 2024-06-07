@@ -11,7 +11,6 @@ interface Message {
 
 const ChatRoom: React.FC = () => {
   const { roomId } = useParams<{ roomId: string }>();
-  //const [roomName, setRoomName] = useState('');
   const [messages, setMessages] = useState<Message[]>([]);
   const [senderName, setSenderName] = useState('');
   const [newMessageContent, setNewMessageContent] = useState('');
@@ -60,9 +59,9 @@ const ChatRoom: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>チャットルーム {roomId} </h1>
-      <ul>
+    <div className="chat-room">
+      <h1>チャットルーム {roomId}</h1>
+      <ul className="message-list">
         {messages.map((message) => (
           <li key={message.id}>
             <strong>{message.sender_name}:</strong> {message.content}
@@ -70,7 +69,7 @@ const ChatRoom: React.FC = () => {
         ))}
       </ul>
       <form onSubmit={sendMessage}>
-        <div>
+        <div className="form-group">
           <h3>名前</h3>
           <input
             type="text"
@@ -80,7 +79,7 @@ const ChatRoom: React.FC = () => {
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <h3>メッセージ</h3>
           <input
             type="text"
@@ -90,9 +89,7 @@ const ChatRoom: React.FC = () => {
             required
           />
         </div>
-        <div>
-          <button type="submit">送信</button>
-        </div>
+        <button type="submit">送信</button>
       </form>
     </div>
   );

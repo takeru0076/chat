@@ -37,7 +37,7 @@ const ChatRooms: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="chat-room">
       <h1>ReactChat - チャットルーム一覧</h1>
       <ul>
         {chatRooms.map((room) => (
@@ -51,10 +51,9 @@ const ChatRooms: React.FC = () => {
         type="text"
         value={newRoomName}
         onChange={(e) => setNewRoomName(e.target.value)}
+        placeholder="新しいチャットルーム名"
       />
-      <div>
-        <button onClick={createRoom}>作成</button>
-      </div>
+      <button onClick={createRoom}>作成</button>
     </div>
   );
 };
